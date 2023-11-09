@@ -1,43 +1,44 @@
 {
-  "headers": [
-    {
-      "source": "/Build/Adventure.data.br",
-      "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/octet-stream"
-        }
-      ]
-    },
-    {
-      "source": "/Build/Adventure.wasm.br",
-      "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/wasm"
-        }
-      ]
-    },
-    {
-      "source": "/Build/Adventure.framework.js.br",
-      "headers": [
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    }
-  ]
-}
+    "headers": [
+      {
+        "source": "/Build/Pixel.data.br",
+        "headers": [
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          }
+        ]
+      },
+      {
+        "source": "/Build/Pixel.wasm.br",
+        "headers": [
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          }
+        ]
+      },
+      {
+        "source": "/Build/Pixel.framework.js.br",
+        "headers": [
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      }
+    ]
+  }
+  
