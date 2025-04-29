@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="TemplateData/loading.css" />
   </head>
   <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" style="display: none"></canvas>
+    <div id="unity-container">
+      <canvas
+        id="unity-canvas"
+        width="1920"
+        height="1080"
+        tabindex="-1"
+      ></canvas>
       <div id="unity-warning"></div>
-      <div id="unity-footer"></div>
     </div>
+
     <div id="loading">
       <div class="tetrominos">
         <div class="tetromino box1"></div>
@@ -22,12 +27,12 @@
         <div class="tetromino box4"></div>
       </div>
     </div>
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var warningBanner = document.querySelector("#unity-warning");
       var loading = document.querySelector("#loading");
-
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
       // If type=='warning', a yellow highlight color is used.
@@ -56,14 +61,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Pixel.loader.js";
+      var fileName = "Pixel";
+      var loaderUrl = buildUrl + "/" + fileName + ".loader.js";
       var config = {
-        dataUrl: buildUrl + "/Pixel.data.br",
-        frameworkUrl: buildUrl + "/Pixel.framework.js.br",
-        codeUrl: buildUrl + "/Pixel.wasm.br",
+        dataUrl: buildUrl + "/" + fileName + ".data.br",
+        frameworkUrl: buildUrl + "/" + fileName + ".framework.js.br",
+        codeUrl: buildUrl + "/" + fileName + ".wasm.br",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Adventure 1",
+        companyName: "TheColors",
+        productName: "Pixel Adventure",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
@@ -77,28 +83,16 @@
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
-
         var meta = document.createElement("meta");
         meta.name = "viewport";
         meta.content =
           "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
         document.getElementsByTagName("head")[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-        unityShowBanner("WebGL builds are not supported on mobile devices.");
       }
 
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        document.body.style.overflow = "hidden";
-        canvas.style.width = document.documentElement.clientWidth + "px";
-        canvas.style.height = document.documentElement.clientHeight + "px";
         createUnityInstance(canvas, config, (progress) => {})
           .then((unityInstance) => {
             loading.style.display = "none";
